@@ -4,15 +4,21 @@ It runs under collectd [Python plugin](http://collectd.org/documentation/manpage
 
 McRouter automatically creates and updates several files useful to monitor it's state, which is by default created under [`/var/mcrouter/stats`](https://github.com/facebook/mcrouter/wiki/Stats-files).
 More information on stats list [here](https://github.com/facebook/mcrouter/wiki/Stats-list).
-## Requirements
 
-* collectd 4.9 or later (for the Python plugin)
-* Python 2.6 or later
+This directory consolidates all the metadata associated with the McRouter collectd plugin. 
+The relevant code for the plugin can be found [here](https://github.com/Radha13/collectd-mcrouter)
+
+## Requirements
+|Software | version|
+|---------|---------|
+|Collectd | 4.9 or later (for the python plugin)|
+|Python   | 2.6 or later |
+
 
 ## Install
 
-1. Clone this repository somewhere accessible by collectd, e.g `/usr/share/collectd/collectd-mcrouter`.
-1. Create a collectd configuration file for the plugin preferably in `/etc/collectd/managed_config/` (see the example below).
+1. Copy [mcrouter_stats.py](https://github.com/Radha13/collectd-mcrouter/blob/master/mcrouter_stats.py) somewhere accessible by collectd, e.g `/usr/share/collectd/collectd-mcrouter`.
+1. Create a collectd configuration file (e.g `mcrouter_stats.conf`) for the plugin preferably in `/etc/collectd/managed_config/` (see the example below).
 1. Restart collectd.
 
 ## Sample configuration
@@ -25,7 +31,6 @@ More information on stats list [here](https://github.com/facebook/mcrouter/wiki/
 <Plugin python>
         # mcrouter_stats.py is at "/usr/share/collectd/collectd-mcrouter/mcrouter_stats.py"
         ModulePath "/usr/share/collectd/collectd-mcrouter"
-        LogTraces true
         Interactive false
         Import "mcrouter_stats"
         <Module "mcrouter_stats">
